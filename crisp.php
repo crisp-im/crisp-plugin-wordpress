@@ -34,9 +34,9 @@ function crisp_plugin_settings_page() {
     <?php settings_fields( 'crisp-plugin-settings-group' ); ?>
     <?php do_settings_sections( 'crisp-plugin-settings-group' ); ?>
     <table class="form-table">
+        <td><a target="_blank" href="https://app.crisp.im/#/settings/websites">Get your Website Id here</a></td>
         <tr valign="top">
         <th scope="row">Website Id</th>
-        <td><a href="https://app.crisp.im/#/settings/websites">Get your Website Id here</a></td>
         <td><input type="text" name="website_id" value="<?php echo esc_attr( get_option('website_id') ); ?>" /></td>
         </tr>
     </table>
