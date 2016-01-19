@@ -12,6 +12,8 @@ Beautiful live chat and live support for your product
 
 == Description ==
 
+Create your create account on https://crisp.im.
+
 Crisp is a freshly new alternative to existing bulky live chat platforms, which focuses on:
 
 - Chat experience (our name comes from that, support must be crispy for your visitors)
@@ -23,14 +25,11 @@ Crisp is a freshly new alternative to existing bulky live chat platforms, which 
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
-
-e.g.
-
-1. Upload the plugin files to the `/wp-content/plugins/crisp` directory, or install the plugin through the WordPress plugins screen directly.
-2. Activate the plugin through the 'Plugins' screen in WordPress
-3. Use the Settings->Crisp screen to configure the plugin
-4. Get your Website Id at https://app.crisp.im/#/settings/websites
+1. Create your create account on https://crisp.im.
+2. Upload the plugin files to the `/wp-content/plugins/crisp` directory, or install the plugin through the WordPress plugins screen directly.
+3. Activate the plugin through the 'Plugins' screen in WordPress
+4. Use the Settings->Crisp screen to configure the plugin
+5. Get your Website Id at https://app.crisp.im/#/settings/websites
 
 == Screenshots ==
 
