@@ -1,5 +1,5 @@
 === Plugin Name ===
-Contributors: crispchat
+Contributors: crisp.im
 Donate link: https://crisp.im
 Tags: livechat, live, chat, crisp
 Requires at least: 3.0.1
