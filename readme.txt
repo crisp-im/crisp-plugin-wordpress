@@ -8,7 +8,7 @@ Stable tag: 4.3
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
-Beatiful live chat and live support for your product
+Beautiful live chat and live support for your product
 
 == Description ==
 
