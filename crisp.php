@@ -45,9 +45,9 @@ function crisp_plugin_settings_page() {
 </div>
 <?php }
 
-add_action('wp_head', 'hook_head');
+add_action('wp_head', 'crisp_hook_head');
 
-function hook_head() {
+function crisp_hook_head() {
 
   $website_id = get_option('website_id');
   $output="<script type='text/javascript'>
