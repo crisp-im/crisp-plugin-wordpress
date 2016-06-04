@@ -60,6 +60,22 @@ function crisp_hook_head() {
   </script>";
 
   echo $output;
+  
+  if ( is_user_logged_in() ) {
+    $current_user = wp_get_current_user();
+    $email = $current_user->user_email;
+		
+	$output='<script type="text/javascript">
+	jQuery(function($){
+	  window.CRISP_READY_TRIGGER = function() {
+	    // Feed this call with your own internal email data.
+	    $crisp.user.email.set("' . $email . '");
+	  };
+	});
+	</script>';
+	
+	echo $output;
+  }
 
 }
 ?>
