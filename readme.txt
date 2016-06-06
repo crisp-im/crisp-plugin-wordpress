@@ -3,7 +3,7 @@ Contributors: crisp.im
 Donate link: https://crisp.im
 Tags: livechat, live, chat, crisp
 Requires at least: 3.0.1
-Tested up to: 3.4
+Tested up to: 4.3
 Stable tag: 4.3
 License: MIT
 License URI: https://opensource.org/licenses/MIT
@@ -25,6 +25,8 @@ Crisp is a freshly new alternative to existing bulky live chat platforms, which 
 
 == Installation ==
 
+https://www.youtube.com/watch?v=u1UHzzW-xXg
+
 1. Create your create account on https://crisp.im.
 2. Upload the plugin files to the `/wp-content/plugins/crisp` directory, or install the plugin through the WordPress plugins screen directly.
 3. Activate the plugin through the 'Plugins' screen in WordPress
@@ -38,6 +40,9 @@ Crisp is a freshly new alternative to existing bulky live chat platforms, which 
 3. Customize your Crisp chatbox
 
 == Changelog ==
+
+= 0.2 =
+* Add e-mail if setted
 
 = 0.1 =
 * Crisp first release
