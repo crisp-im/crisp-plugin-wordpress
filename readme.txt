@@ -1,16 +1,18 @@
 === Plugin Name ===
-Contributors: crispchat
+Contributors: crisp.im
 Donate link: https://crisp.im
-Tags: livechat, live, chat
+Tags: livechat, live, chat, crisp
 Requires at least: 3.0.1
-Tested up to: 3.4
+Tested up to: 4.3
 Stable tag: 4.3
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
-Beatiful live chat and live support for your product
+Beautiful live chat and live support for your product
 
 == Description ==
+
+Create your create account on https://crisp.im.
 
 Crisp is a freshly new alternative to existing bulky live chat platforms, which focuses on:
 
@@ -23,14 +25,13 @@ Crisp is a freshly new alternative to existing bulky live chat platforms, which 
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
+https://www.youtube.com/watch?v=u1UHzzW-xXg
 
-e.g.
-
-1. Upload the plugin files to the `/wp-content/plugins/crisp` directory, or install the plugin through the WordPress plugins screen directly.
-2. Activate the plugin through the 'Plugins' screen in WordPress
-3. Use the Settings->Crisp screen to configure the plugin
-4. Get your Website Id at https://app.crisp.im/#/settings/websites
+1. Create your create account on https://crisp.im.
+2. Upload the plugin files to the `/wp-content/plugins/crisp` directory, or install the plugin through the WordPress plugins screen directly.
+3. Activate the plugin through the 'Plugins' screen in WordPress
+4. Use the Settings->Crisp screen to configure the plugin
+5. Get your Website Id at https://app.crisp.im/#/settings/websites
 
 == Screenshots ==
 
@@ -39,6 +40,9 @@ e.g.
 3. Customize your Crisp chatbox
 
 == Changelog ==
+
+= 0.2 =
+* Add e-mail if setted
 
 = 0.1 =
 * Crisp first release
