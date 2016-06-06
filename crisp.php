@@ -66,12 +66,13 @@ function crisp_hook_head() {
     $email = $current_user->user_email;
 		
 	$output='<script type="text/javascript">
-	jQuery(function($){
-	  window.CRISP_READY_TRIGGER = function() {
-	    // Feed this call with your own internal email data.
-	    $crisp.user.email.set("' . $email . '");
-	  };
-	});
+	if (jQuery) {
+		jQuery(function($){
+		  window.CRISP_READY_TRIGGER = function() {
+		    $crisp.user.email.set("' . $email . '");
+		  };
+		});
+	}
 	</script>';
 	
 	echo $output;
