@@ -1,14 +1,14 @@
 <?php
 /**
  * @package Crisp
- * @version 0.2
+ * @version 0.3
  */
 /*
 Plugin Name: Crisp
 Plugin URI: http://wordpress.org/plugins/crisp/
 Description: Crisp is a Livechat plugin
 Author: Crisp Communications
-Version: 0.2
+Version: 0.1
 Author URI: https://crisp.im
 */
 
@@ -45,9 +45,9 @@ function crisp_plugin_settings_page() {
 </div>
 <?php }
 
-add_action('wp_head', 'hook_head');
+add_action('wp_head', 'crisp_hook_head');
 
-function hook_head() {
+function crisp_hook_head() {
 
   $website_id = get_option('website_id');
   $output="<script type='text/javascript'>
@@ -65,17 +65,18 @@ function hook_head() {
     $current_user = wp_get_current_user();
     $email = $current_user->user_email;
 
-    $output='<script type="text/javascript">
-    if (jQuery) {
-      jQuery(function($){
-        window.CRISP_READY_TRIGGER = function() {
-          $crisp.user.email.set("' . $email . '");
-        };
-      });
-    }
-    </script>';
-
-    echo $output;
+  $output='<script type="text/javascript">
+  if (jQuery) {
+    jQuery(function($){
+      window.CRISP_READY_TRIGGER = function() {
+        $crisp.set("user:email", "' . $email . '");
+      };
+    });
   }
+  </script>';
+
+  echo $output;
+  }
+
 }
 ?>

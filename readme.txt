@@ -41,6 +41,9 @@ https://www.youtube.com/watch?v=u1UHzzW-xXg
 
 == Changelog ==
 
+= 0.3 =
+* New JS API
+
 = 0.2 =
 * Add e-mail if setted
 
