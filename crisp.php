@@ -69,7 +69,7 @@ function crisp_hook_head() {
 	if (jQuery) {
 		jQuery(function($){
 		  window.CRISP_READY_TRIGGER = function() {
-		    $crisp.user.email.set("' . $email . '");
+		    $crisp.set("user:email", "' . $email . '");
 		  };
 		});
 	}
