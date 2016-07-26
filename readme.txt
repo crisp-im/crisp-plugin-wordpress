@@ -41,6 +41,10 @@ https://www.youtube.com/watch?v=u1UHzzW-xXg
 
 == Changelog ==
 
+= 0.4 =
+* Bump up
+
+
 = 0.3 =
 * New JS API
 
