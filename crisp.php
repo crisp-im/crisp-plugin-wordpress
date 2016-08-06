@@ -2,13 +2,11 @@
 /**
  * @package Crisp
  * @version 0.5
- */
-/*
 Plugin Name: Crisp
 Plugin URI: http://wordpress.org/plugins/crisp/
 Description: Crisp is a Livechat plugin
 Author: Crisp Communications
-Version: 0.4
+Version: 0.5
 Author URI: https://crisp.im
 */
 
@@ -35,6 +33,7 @@ function crisp_plugin_settings_page() {
   $http_callback = "http" . (($_SERVER['SERVER_PORT'] == 443) ? "s://" : "://") . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
   $add_to_crisp_link = "https://app.crisp.im/initiate/plugin/aca0046c-356c-428f-8eeb-063014c6a278?payload=$http_callback";
 ?>
+
 <link rel="stylesheet" href="<?php echo plugins_url("assets/style.css", __FILE__ );?>">
   <?php
   if ($is_crisp_working) {
@@ -82,17 +81,17 @@ function crisp_hook_head() {
     $current_user = wp_get_current_user();
     $email = $current_user->user_email;
 
-  $output='<script type="text/javascript">
-  if (jQuery) {
-    jQuery(function($){
-      window.CRISP_READY_TRIGGER = function() {
-        $crisp.set("user:email", "' . $email . '");
-      };
-    });
-  }
-  </script>';
+  	$output='<script type="text/javascript">
+  	if (jQuery) {
+  		jQuery(function($){
+  		  window.CRISP_READY_TRIGGER = function() {
+  		    $crisp.set("user:email", "' . $email . '");
+  		  };
+  		});
+  	}
+  	</script>';
 
-  echo $output;
+  	echo $output;
   }
 
 }
