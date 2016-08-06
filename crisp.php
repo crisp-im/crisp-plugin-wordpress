@@ -1,14 +1,12 @@
 <?php
 /**
  * @package Crisp
- * @version 0.4
- */
-/*
+ * @version 0.5
 Plugin Name: Crisp
 Plugin URI: http://wordpress.org/plugins/crisp/
 Description: Crisp is a Livechat plugin
 Author: Crisp Communications
-Version: 0.4
+Version: 0.5
 Author URI: https://crisp.im
 */
 
@@ -26,24 +24,40 @@ function register_crisp_plugin_settings() {
 }
 
 function crisp_plugin_settings_page() {
-?>
-<div class="wrap">
-<h2>Crisp</h2>
+  if (isset($_GET["crisp_website_id"]) && !empty($_GET["crisp_website_id"])) {
+    update_option("website_id", $_GET["crisp_website_id"]);
+  }
 
-<form method="post" action="options.php">
-    <?php settings_fields( 'crisp-plugin-settings-group' ); ?>
-    <?php do_settings_sections( 'crisp-plugin-settings-group' ); ?>
-    <table class="form-table">
-        <td><a target="_blank" href="https://app.crisp.im/#/settings/websites">Get your Website Id here</a></td>
-        <tr valign="top">
-        <th scope="row">Website Id</th>
-        <td><input type="text" name="website_id" value="<?php echo esc_attr( get_option('website_id') ); ?>" /></td>
-        </tr>
-    </table>
-    <?php submit_button(); ?>
-</form>
-</div>
-<?php }
+  $website_id = get_option('website_id');
+  $is_crisp_working = isset($website_id) && !empty($website_id);
+  $http_callback = "http" . (($_SERVER['SERVER_PORT'] == 443) ? "s://" : "://") . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+  $add_to_crisp_link = "https://app.crisp.im/initiate/plugin/aca0046c-356c-428f-8eeb-063014c6a278?payload=$http_callback";
+?>
+
+<link rel="stylesheet" href="<?php echo plugins_url("assets/style.css", __FILE__ );?>">
+  <?php
+  if ($is_crisp_working) {
+  ?>
+  <div class="wrap crisp-wrap">
+    <div class="crisp-modal">
+      <span class="crisp-span">Crisp is working. Click on retry to reconfigure</span>
+      <img class="crisp-check" src="<?php echo plugins_url("assets/check.png", __FILE__ );?>">
+      <a class="crisp-retry" href="<?php echo $add_to_crisp_link; ?>">Retry</a>
+    </div>
+  </div>
+
+  <?php
+  } else {
+  ?>
+  <div class="wrap crisp-wrap">
+    <div class="crisp-modal">
+      <span class="crisp-span">To get started, please click on "link with Crisp"</span>
+      <a href="<?php echo $add_to_crisp_link; ?>"><img class="crisp-sign" src="<?php echo plugins_url("assets/link-with-crisp.png", __FILE__ );?>" /></a>
+    </div>
+  </div>
+  <?php
+  }
+}
 
 add_action('wp_head', 'crisp_hook_head');
 
@@ -59,23 +73,25 @@ function crisp_hook_head() {
     })();
   </script>";
 
-  echo $output;
+  if (isset($website_id) && !empty($website_id)) {
+    echo $output;
+  }
 
   if ( is_user_logged_in() ) {
     $current_user = wp_get_current_user();
     $email = $current_user->user_email;
 
-  $output='<script type="text/javascript">
-  if (jQuery) {
-    jQuery(function($){
-      window.CRISP_READY_TRIGGER = function() {
-        $crisp.set("user:email", "' . $email . '");
-      };
-    });
-  }
-  </script>';
+  	$output='<script type="text/javascript">
+  	if (jQuery) {
+  		jQuery(function($){
+  		  window.CRISP_READY_TRIGGER = function() {
+  		    $crisp.set("user:email", "' . $email . '");
+  		  };
+  		});
+  	}
+  	</script>';
 
-  echo $output;
+  	echo $output;
   }
 
 }
