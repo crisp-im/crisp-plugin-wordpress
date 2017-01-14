@@ -5,7 +5,7 @@
 Plugin Name: Crisp
 Plugin URI: http://wordpress.org/plugins/crisp/
 Description: Crisp is a Livechat plugin
-Author: Crisp Communications
+Author: Crisp IM
 Version: 0.6
 Author URI: https://crisp.im
 */
