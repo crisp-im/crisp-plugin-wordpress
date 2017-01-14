@@ -3,7 +3,7 @@ Contributors: crisp.im
 Donate link: https://crisp.im
 Tags: livechat, live, chat, crisp
 Requires at least: 3.0.1
-Tested up to: 4.3
+Tested up to: 4.7
 Stable tag: 4.3
 License: MIT
 License URI: https://opensource.org/licenses/MIT
