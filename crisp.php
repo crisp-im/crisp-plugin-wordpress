@@ -1,12 +1,12 @@
 <?php
 /**
  * @package Crisp
- * @version 0.8
+ * @version 0.9
 Plugin Name: Crisp
 Plugin URI: http://wordpress.org/plugins/crisp/
 Description: Crisp is a Livechat plugin
 Author: Crisp IM
-Version: 0.8
+Version: 0.9
 Author URI: https://crisp.im
 */
 
@@ -73,7 +73,7 @@ function crisp_hook_head() {
 
   $website_id = get_option('website_id');
 
-  $output="<script data-cfasync='false' type='text/javascript'>
+  $output="<script data-cfasync='false'>
     CRISP_WEBSITE_ID = '$website_id';
     (function(){
       d=document;s=d.createElement('script');
