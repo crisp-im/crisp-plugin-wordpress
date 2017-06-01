@@ -1,12 +1,12 @@
 <?php
 /**
  * @package Crisp
- * @version 0.12
+ * @version 0.13
 Plugin Name: Crisp
 Plugin URI: http://wordpress.org/plugins/crisp/
 Description: Crisp is a Livechat plugin
 Author: Crisp IM
-Version: 0.12
+Version: 0.13
 Author URI: https://crisp.im
 */
 
@@ -69,42 +69,60 @@ function crisp_plugin_settings_page() {
 
 add_action('wp_head', 'crisp_hook_head');
 
+function gen_uuid() {
+  return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
+    mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ),
+    mt_rand( 0, 0xffff ),
+    mt_rand( 0, 0x0fff ) | 0x4000,
+    mt_rand( 0, 0x3fff ) | 0x8000,
+    mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff )
+  );
+}
+
 function crisp_hook_head() {
 
   $website_id = get_option('website_id');
 
+  if (!isset($website_id) || empty($website_id)) {
+    return;
+  }
+
+  if (is_user_logged_in()) {
+    $current_user = wp_get_current_user();
+
+    $crisp_token_id = get_user_meta($current_user->ID, 'crisp_token_id', true);
+
+    if (!$crisp_token_id) {
+      $crisp_token_id = gen_uuid();
+      update_user_meta($current_user->ID, 'crisp_token_id', $crisp_token_id);
+    }
+  }
+
   $output="<script data-cfasync='false'>
     window.\$crisp=[];
-    CRISP_WEBSITE_ID = '$website_id';
-    (function(){
+    CRISP_WEBSITE_ID = '$website_id';";
+
+  if (isset($crisp_token_id)) {
+    $output .= "CRISP_TOKEN_ID = '$crisp_token_id';";
+  }
+  $output .= "(function(){
       d=document;s=d.createElement('script');
       s.src='https://client.crisp.im/l.js';
       s.async=1;d.getElementsByTagName('head')[0].appendChild(s);
     })();
   </script>";
 
-  if (isset($website_id) && !empty($website_id)) {
-    echo $output;
-  }
-
-  if ( is_user_logged_in() ) {
-    $current_user = wp_get_current_user();
+  if (isset($current_user)) {
     $email = $current_user->user_email;
     $nickname = $current_user->display_name;
 
-  	$output='<script type="text/javascript">
-  	if (typeof jQuery === "function") {
-  		jQuery(function($){
-  		  window.CRISP_READY_TRIGGER = function() {
-  		    $crisp.push(["set", "user:email", "' . $email . '"]);
-          $crisp.push(["set", "user:nickname", "' . $nickname . '"]);
-  		  };
-  		});
-  	}
+  	$output .='<script type="text/javascript">
+      $crisp.push(["set", "user:email", "' . $email . '"]);
+      $crisp.push(["set", "user:nickname", "' . $nickname . '"]);
   	</script>';
 
-  	echo $output;
   }
 
+  echo $output;
 }
 ?>
