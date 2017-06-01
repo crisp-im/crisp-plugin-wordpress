@@ -1,10 +1,10 @@
 === Crisp Live Chat ===
 Contributors: crisp.im
 Donate link: https://crisp.im
-Tags: livechat, chat, crisp, free-live-chat, live-chat
+Tags: livechat, chat, live chat, crisp, free-live-chat, live-chat, live support, chat-plugin
 Requires at least: 3.0.1
-Tested up to: 4.7
-Stable tag: 4.3
+Tested up to: 4.8
+Stable tag: 4.7
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
