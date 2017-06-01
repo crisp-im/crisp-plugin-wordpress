@@ -8,7 +8,7 @@ Stable tag: 4.3
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
-Crisp is a free and beautiful livechat to interact with customers. Mobile applications. Customize your chatbox to fit your website design.
+Boost your visitor satisfaction with Crisp, the best live chat software. Free Wordpress Plugin. Use it on your mobile or on your computer.
 
 == Description ==
 
