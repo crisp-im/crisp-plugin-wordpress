@@ -1,12 +1,12 @@
 <?php
 /**
  * @package Crisp
- * @version 0.13
+ * @version 0.14
 Plugin Name: Crisp
 Plugin URI: http://wordpress.org/plugins/crisp/
 Description: Crisp is a Livechat plugin
 Author: Crisp IM
-Version: 0.13
+Version: 0.14
 Author URI: https://crisp.im
 */
 
@@ -45,7 +45,9 @@ function crisp_plugin_settings_page() {
       <p class="crisp-subtitle">You can now use Crisp from your homepage.</p>
       <a class="crisp-button crisp-neutral" href="https://app.crisp.im/settings/website/<?php echo $website_id ?>">Go to my Crisp settings</a>
 
-      <a class="crisp-button crisp" href="<?php echo $add_to_crisp_link; ?>">Reconfigure</a>
+      <a class="crisp-button crisp" href="https://app.crisp.im/website/<?php echo $website_id ?>/inbox/">Go to my Inbox</a>
+
+      <a class="crisp-button crisp-neutral" href="<?php echo $add_to_crisp_link; ?>">Reconfigure</a>
 
       
     </div>
