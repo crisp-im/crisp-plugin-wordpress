@@ -25,7 +25,7 @@ function register_crisp_plugin_onboarding() {
 
   if (empty($website_id) && (empty($onboarding) || !$onboarding)) {
     update_option("crisp_onboarding", true);
-    wp_redirect(admin_url('admin.php?page=crisp/crisp.php'));
+    wp_redirect(admin_url('admin.php?page='.plugin_basename(__FILE__)));
   }
 }
 
