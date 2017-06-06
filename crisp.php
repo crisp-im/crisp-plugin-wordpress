@@ -1,12 +1,12 @@
 <?php
 /**
  * @package Crisp
- * @version 0.15
+ * @version 0.16
 Plugin Name: Crisp
 Plugin URI: http://wordpress.org/plugins/crisp/
 Description: Crisp is a Livechat plugin
 Author: Crisp IM
-Version: 0.15
+Version: 0.16
 Author URI: https://crisp.im
 */
 
@@ -20,11 +20,11 @@ function crisp_create_menu() {
 
 
 function register_crisp_plugin_onboarding() {
-  $onboarding = get_option('onboarding');
+  $onboarding = get_option('crisp_onboarding');
   $website_id = get_option('website_id');
 
-  if (empty($onboarding) && (empty($onboarding) || !$onboarding)) {
-    update_option("onboarding", true);
+  if (empty($website_id) && (empty($onboarding) || !$onboarding)) {
+    update_option("crisp_onboarding", true);
     wp_redirect(admin_url('admin.php?page=crisp/crisp.php'));
   }
 }
@@ -80,8 +80,7 @@ function crisp_plugin_settings_page() {
   }
 }
 
-add_action('wp_head', 'crisp_activate');
-register_activation_hook(__FILE__, 'myplugin_activate');
+add_action('wp_head', 'crisp_hook_head');
 
 function gen_uuid() {
   return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
@@ -139,4 +138,5 @@ function crisp_hook_head() {
 
   echo $output;
 }
+
 ?>
