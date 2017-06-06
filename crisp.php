@@ -1,26 +1,37 @@
 <?php
 /**
  * @package Crisp
- * @version 0.14
+ * @version 0.15
 Plugin Name: Crisp
 Plugin URI: http://wordpress.org/plugins/crisp/
 Description: Crisp is a Livechat plugin
 Author: Crisp IM
-Version: 0.14
+Version: 0.15
 Author URI: https://crisp.im
 */
-
 
 add_action('admin_menu', 'crisp_create_menu');
 
 function crisp_create_menu() {
   add_menu_page('Crisp Settings', 'Crisp Settings', 'administrator', __FILE__, 'crisp_plugin_settings_page' , 'https://crisp.im/favicon.png');
   add_action( 'admin_init', 'register_crisp_plugin_settings' );
+  add_action( 'admin_init', 'register_crisp_plugin_onboarding');
 }
 
 
+function register_crisp_plugin_onboarding() {
+  $onboarding = get_option('onboarding');
+  $website_id = get_option('website_id');
+
+  if (empty($onboarding) && (empty($onboarding) || !$onboarding)) {
+    update_option("onboarding", true);
+    wp_redirect(admin_url('admin.php?page=crisp/crisp.php'));
+  }
+}
+
 function register_crisp_plugin_settings() {
   register_setting( 'crisp-plugin-settings-group', 'website_id' );
+  add_option('crisp_onboarding', false);
 }
 
 function crisp_plugin_settings_page() {
@@ -69,7 +80,8 @@ function crisp_plugin_settings_page() {
   }
 }
 
-add_action('wp_head', 'crisp_hook_head');
+add_action('wp_head', 'crisp_activate');
+register_activation_hook(__FILE__, 'myplugin_activate');
 
 function gen_uuid() {
   return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
