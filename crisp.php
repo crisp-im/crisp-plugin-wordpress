@@ -1,12 +1,12 @@
 <?php
 /**
  * @package Crisp
- * @version 0.16
+ * @version 0.17
 Plugin Name: Crisp
 Plugin URI: http://wordpress.org/plugins/crisp/
 Description: Crisp is a Livechat plugin
 Author: Crisp IM
-Version: 0.16
+Version: 0.17
 Author URI: https://crisp.im
 */
 
@@ -82,16 +82,6 @@ function crisp_plugin_settings_page() {
 
 add_action('wp_head', 'crisp_hook_head');
 
-function gen_uuid() {
-  return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
-    mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ),
-    mt_rand( 0, 0xffff ),
-    mt_rand( 0, 0x0fff ) | 0x4000,
-    mt_rand( 0, 0x3fff ) | 0x8000,
-    mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff )
-  );
-}
-
 function crisp_hook_head() {
 
   $website_id = get_option('website_id');
@@ -104,20 +94,13 @@ function crisp_hook_head() {
     $current_user = wp_get_current_user();
 
     $crisp_token_id = get_user_meta($current_user->ID, 'crisp_token_id', true);
-
-    if (!$crisp_token_id) {
-      $crisp_token_id = gen_uuid();
-      update_user_meta($current_user->ID, 'crisp_token_id', $crisp_token_id);
-    }
   }
 
   $output="<script data-cfasync='false'>
     window.\$crisp=[];
     CRISP_WEBSITE_ID = '$website_id';";
 
-  if (isset($crisp_token_id)) {
-    $output .= "CRISP_TOKEN_ID = '$crisp_token_id';";
-  }
+
   $output .= "(function(){
       d=document;s=d.createElement('script');
       s.src='https://client.crisp.im/l.js';
