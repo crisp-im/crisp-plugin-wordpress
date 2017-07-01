@@ -1,6 +1,6 @@
 === Crisp Live Chat ===
-Contributors: crisp.im
-Donate link: https://crisp.im
+Contributors: crisp.chat
+Donate link: https://crisp.chat
 Tags: livechat, chat, live chat, crisp, free-live-chat, live-chat, live support, chat-plugin
 Requires at least: 3.0.1
 Tested up to: 4.8

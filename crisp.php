@@ -7,13 +7,13 @@ Plugin URI: http://wordpress.org/plugins/crisp/
 Description: Crisp is a Livechat plugin
 Author: Crisp IM
 Version: 0.17
-Author URI: https://crisp.im
+Author URI: https://crisp.chat
 */
 
 add_action('admin_menu', 'crisp_create_menu');
 
 function crisp_create_menu() {
-  add_menu_page('Crisp Settings', 'Crisp Settings', 'administrator', __FILE__, 'crisp_plugin_settings_page' , 'https://crisp.im/favicon.png');
+  add_menu_page('Crisp Settings', 'Crisp Settings', 'administrator', __FILE__, 'crisp_plugin_settings_page' , 'https://crisp.chat/favicon.png');
   add_action( 'admin_init', 'register_crisp_plugin_settings' );
   add_action( 'admin_init', 'register_crisp_plugin_onboarding');
 }
@@ -42,7 +42,7 @@ function crisp_plugin_settings_page() {
   $website_id = get_option('website_id');
   $is_crisp_working = isset($website_id) && !empty($website_id);
   $http_callback = "http" . (($_SERVER['SERVER_PORT'] == 443) ? "s://" : "://") . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-  $add_to_crisp_link = "https://app.crisp.im/initiate/plugin/aca0046c-356c-428f-8eeb-063014c6a278?payload=$http_callback";
+  $add_to_crisp_link = "https://app.crisp.chat/initiate/plugin/aca0046c-356c-428f-8eeb-063014c6a278?payload=$http_callback";
 ?>
 
 <link rel="stylesheet" href="<?php echo plugins_url("assets/style.css", __FILE__ );?>">
@@ -54,9 +54,9 @@ function crisp_plugin_settings_page() {
     <div class="crisp-modal">
       <h2 class="crisp-title">Connected with Crisp.</h2>
       <p class="crisp-subtitle">You can now use Crisp from your homepage.</p>
-      <a class="crisp-button crisp-neutral" href="https://app.crisp.im/settings/website/<?php echo $website_id ?>">Go to my Crisp settings</a>
+      <a class="crisp-button crisp-neutral" href="https://app.crisp.chat/settings/website/<?php echo $website_id ?>">Go to my Crisp settings</a>
 
-      <a class="crisp-button crisp" href="https://app.crisp.im/website/<?php echo $website_id ?>/inbox/">Go to my Inbox</a>
+      <a class="crisp-button crisp" href="https://app.crisp.chat/website/<?php echo $website_id ?>/inbox/">Go to my Inbox</a>
 
       <a class="crisp-button crisp-neutral" href="<?php echo $add_to_crisp_link; ?>">Reconfigure</a>
 
@@ -103,7 +103,7 @@ function crisp_hook_head() {
 
   $output .= "(function(){
       d=document;s=d.createElement('script');
-      s.src='https://client.crisp.im/l.js';
+      s.src='https://client.crisp.chat/l.js';
       s.async=1;d.getElementsByTagName('head')[0].appendChild(s);
     })();
   </script>";
