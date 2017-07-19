@@ -12,7 +12,7 @@ Boost your visitor satisfaction with Crisp, the best live chat software. Free Wo
 
 == Description ==
 
-Crisp is a free and beautiful live chat platform for interacting with customers. Use Crisp to customize your chatbox to fit your website design.
+Crisp is a free and beautiful live chat platform for interacting with customers. Use Crisp to improve your customer satisfaction.
 
 [youtube https://www.youtube.com/watch?v=pGCrBRtytQQ]
 
