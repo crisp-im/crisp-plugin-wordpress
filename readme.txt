@@ -1,7 +1,7 @@
 === Crisp Live Chat ===
 Contributors: crisp.chat
 Donate link: https://crisp.chat
-Tags: livechat, chat, live chat, crisp, free-live-chat, live-chat, live support, chat-plugin
+Tags: livechat, chat, live chat, crisp, free-live-chat, live-chat, live support, chat-plugin, woocommerce
 Requires at least: 3.0.1
 Tested up to: 4.8
 Stable tag: 4.7
