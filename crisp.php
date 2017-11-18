@@ -1,12 +1,12 @@
 <?php
 /**
  * @package Crisp
- * @version 0.17
+ * @version 0.19
 Plugin Name: Crisp
 Plugin URI: http://wordpress.org/plugins/crisp/
 Description: Crisp is a Livechat plugin
 Author: Crisp IM
-Version: 0.17
+Version: 0.19
 Author URI: https://crisp.chat
 */
 
@@ -14,10 +14,9 @@ add_action('admin_menu', 'crisp_create_menu');
 
 function crisp_create_menu() {
   add_menu_page(__('Crisp Settings', 'crispchat'), __('Crisp Settings', 'crispchat'), 'administrator', __FILE__, 'crisp_plugin_settings_page' , 'https://crisp.chat/favicon.png');
-  add_action( 'admin_init', 'register_crisp_plugin_settings' );
-  add_action( 'admin_init', 'register_crisp_plugin_onboarding');
+  add_action('admin_init', 'register_crisp_plugin_settings' );
+  add_action('admin_init', 'register_crisp_plugin_onboarding');
 }
-
 
 function register_crisp_plugin_onboarding() {
   $onboarding = get_option('crisp_onboarding');
@@ -80,20 +79,98 @@ function crisp_plugin_settings_page() {
   }
 }
 
-add_action('wp_head', 'crisp_hook_head');
+add_action('wp_head', 'crisp_hook_head', 1);
+
+function crisp_sync_wordpress_user() {
+  $output = "";
+
+
+  if (is_user_logged_in()) {
+    $current_user = wp_get_current_user();
+  }
+
+  if (!isset($current_user)) {
+    return "";
+  }
+
+  $email = $current_user->user_email;
+  $nickname = $current_user->display_name;
+
+  if (!empty($email)) {
+    $output .= '$crisp.push(["set", "user:email", "' . $email . '"]);';
+  }
+
+  if (!empty($nickname)) {
+    $output .= '$crisp.push(["set", "user:nickname", "' . $nickname . '"]);';
+  }
+
+  return $output;
+}
+
+function crisp_sync_woocommerce_customer() {
+  $output = "";
+  if (!class_exists("WooCommerce") || is_admin()) {
+    return $output;
+  }
+
+  $customer = WC()->session->get("customer");
+
+  if ($customer == NULL) {
+    return $output;
+  }
+
+  if (isset($customer["phone"]) && !empty($customer["phone"])) {
+    $output .= '$crisp.push(["set", "user:phone", "' . $customer["phone"] . '"]);';
+  }
+
+  $nickname = "";
+
+  if (isset($customer["first_name"]) && !empty($customer["first_name"])) {
+    $nickname = $customer["first_name"];
+  }
+  if (isset($customer["last_name"]) && !empty($customer["last_name"])) {
+    $nickname .= " ".$customer["last_name"];
+  }
+
+  if (!empty($nickname)) {
+    $output .= '$crisp.push(["set", "user:nickname", "' . $nickname . '"]);';
+  }
+
+  $data = array();
+  $data_keys = array(
+    "company",
+    "address",
+    "address_1",
+    "address_2",
+    "postcode",
+    "state",
+    "country",
+    "shipping_company",
+    "shipping_address",
+    "shipping_address_1",
+    "shipping_address_2",
+    "shipping_state",
+    "shipping_country",
+  );
+
+  foreach ($data_keys as $key) {
+    if (isset($customer[$key]) && !empty($customer[$key])) {
+      $data[] = '["'. $key . '", "' . $customer[$key] . '"]';
+    }
+  }
+
+  if (count($data) > 0) {
+    $output .= '$crisp.push(["set", "session:data", [[' . implode(",", $data) . ']]]);';
+  }
+
+  return $output;
+}
 
 function crisp_hook_head() {
-
   $website_id = get_option('website_id');
 
   if (!isset($website_id) || empty($website_id)) {
     return;
-  }
-
-  if (is_user_logged_in()) {
-    $current_user = wp_get_current_user();
-
-    $crisp_token_id = get_user_meta($current_user->ID, 'crisp_token_id', true);
   }
 
   $output="<script data-cfasync='false'>
@@ -105,19 +182,12 @@ function crisp_hook_head() {
       d=document;s=d.createElement('script');
       s.src='https://client.crisp.chat/l.js';
       s.async=1;d.getElementsByTagName('head')[0].appendChild(s);
-    })();
-  </script>";
+    })();";
 
-  if (isset($current_user)) {
-    $email = $current_user->user_email;
-    $nickname = $current_user->display_name;
+  $output .= crisp_sync_wordpress_user();
+  $output .= crisp_sync_woocommerce_customer();
 
-  	$output .='<script type="text/javascript">
-      $crisp.push(["set", "user:email", "' . $email . '"]);
-      $crisp.push(["set", "user:nickname", "' . $nickname . '"]);
-  	</script>';
-
-  }
-
+  $output .= "</script>";
+  
   echo $output;
 }

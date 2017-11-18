@@ -1,7 +1,7 @@
 === Crisp Live Chat ===
 Contributors: crisp.chat
 Donate link: https://crisp.chat
-Tags: livechat, chat, live chat, crisp, free-live-chat, live-chat, live support, chat-plugin
+Tags: livechat, chat, live chat, crisp, free-live-chat, live-chat, live support, chat-plugin, woocommerce
 Requires at least: 3.0.1
 Tested up to: 4.8
 Stable tag: 4.7
@@ -12,51 +12,51 @@ Boost your visitor satisfaction with Crisp, the best live chat software. Free Wo
 
 == Description ==
 
-Crisp is a free and beautiful livechat to interact with customers. Mobile applications. Customize your chatbox to fit your website design.
+Crisp is a free and beautiful live chat platform for interacting with customers. Use Crisp to improve your customer satisfaction.
 
 [youtube https://www.youtube.com/watch?v=pGCrBRtytQQ]
 
-The best way to chat with your customers
+The best way to chat with your customers.
 
-Crisp allow you to interact with your customers. From sales to customer support, Crisp is made to keep your workflow simple. You can add your team-mates to your Crisp and dealing all your chat, e-mails, (and more in the future) from a single interface.
+Crisp allows you to interact with your customers the way you want to. From sales to customer support, Crisp keeps your workflow simple. Add teammates to support chat and email, all from a single user interface.
 
-Look at what your visitors are writing
+See what your visitors are typing.
 
-Your website visitors are not all digital natives and some users takes time to write. Crisp allow you to look what your visitors are writing in real-time, allowing you to respond faster than light.
+Not all visitors to your website are digital natives. 
+For many, it takes time to type a response. With Crisp, you can see what your visitors are typing in real time, allowing you to respond with the right information in little to no time.
 
 Available on mobile and desktop
 
-Crisp is available on iOS and Android and on Windows and Mac OS.
+Crisp is available on iOS, Android, WIndows, and Mac OS operating systems.
 
 You can use it in your browser too. It's up to you.
 
-Affordable customer support
+Affordable customer support.
 
-Crisp takes a different business approach that other livechat services. We do not sell a limited chatbox service as others do: with Crisp, the base chat service is free and unlimited. This should cover the basic needs of anyone using the service.
+Crisp takes a different business approach than other live chat services. We do not sell a limited chatbox service—with Crisp, the base chat service is free and unlimited, more than enough to cover the basic needs of anyone using the service.
 
-You can use paid plugins to extend your Crisp features.
+Use paid plugins to extend the power of your Crisp features.
 
 Working hours
 
-Set your working hours in your Crisp dashboard to prevent receiving chat during your valentine's lunch.
+Set your working hours in the Crisp dashboard to prevent receiving chat requests during lunchtime, or your special date.
 
 See who your visitors are
 
-Crisp allow you to see your visitor e-mail, fullname, picture, location, social networks, and browsed web-pages.
+With Crisp, you can see your visitor's important information, such as email, full name, picture, location, social networks, and browsed webpages.
 
 Be notified
 
- * Offline? We send you a notify you on your devices.
- * Not replying? We forward you chat in your mailbox. You can directly reply to your visitor by e-mail and your reply is forwarded to your Crisp and to your visitor e-mail (if e-mail is provided). We keep up everything synced!
+ * Offline? Crisp can send notifications to all your mobile devices.
+ * Not replying? Crisp will forward your chat to your mailbox. From there, you can directly reply by email—Crisp will sync everything up.
 
 Integrate with other apps
 
-You can integrate Crisp with Slack, your e-mails.
-Other integrations are coming too: Zendesk, Facebook, Twitter.
+You can integrate Crisp with Slack, your e-mails, Messenger, Twitter, Telegram and SMS.
 
 Cool chat experience
 
-From smileys to animations, are chat system is made to be fresh, cool and simple. Just try it!
+From smileys to animations, our chat system is fresh, cool, and simple to use. Just try it! 
 
 
 == Installation ==
