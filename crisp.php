@@ -1,12 +1,12 @@
 <?php
 /**
  * @package Crisp
- * @version 0.19
+ * @version 0.20
 Plugin Name: Crisp
 Plugin URI: http://wordpress.org/plugins/crisp/
 Description: Crisp is a Livechat plugin
 Author: Crisp IM
-Version: 0.19
+Version: 0.20
 Author URI: https://crisp.chat
 */
 
@@ -36,6 +36,10 @@ function register_crisp_plugin_settings() {
 function crisp_plugin_settings_page() {
   if (isset($_GET["crisp_website_id"]) && !empty($_GET["crisp_website_id"])) {
     update_option("website_id", $_GET["crisp_website_id"]);
+  }
+
+  if (isset($_GET["crisp_verify"]) && !empty($_GET["crisp_verify"])) {
+    update_option("website_verify", $_GET["crisp_verify"]);
   }
 
   $website_id = get_option('website_id');
@@ -93,11 +97,16 @@ function crisp_sync_wordpress_user() {
     return "";
   }
 
+  $website_verify = get_option('website_verify');
+
   $email = $current_user->user_email;
   $nickname = $current_user->display_name;
 
-  if (!empty($email)) {
+  if (!empty($email) && empty($website_verify)) {
     $output .= '$crisp.push(["set", "user:email", "' . $email . '"]);';
+  } else if (!empty($email)) {
+    $hmac = hash_hmac("sha256", $email, $website_verify);
+    $output .= '$crisp.push(["set", "user:email", ["' . $email . '", "' . $hmac . '"]]);';
   }
 
   if (!empty($nickname)) {
