@@ -72,7 +72,7 @@ function crisp_plugin_settings_page() {
     <div class="crisp-modal">
       <h2 class="crisp-title"><?php _e('Connect with Crisp.', 'crisp'); ?></h2>
       <p class="crisp-subtitle"><?php _e('This link will redirect you to Crisp and configure your Wordpress. Magic', 'crisp'); ?></p>
-      <a class="crisp-button crisp" href="<?php echo $add_to_crisp_link; ?>"><?php _e('Connect with Crisp', 'cris'); ?></a>
+      <a class="crisp-button crisp" href="<?php echo $add_to_crisp_link; ?>"><?php _e('Connect with Crisp', 'crisp'); ?></a>
     </div>
   </div>
   <?php
