@@ -2,18 +2,21 @@
 /**
  * @package Crisp
  * @version 0.19
-Plugin Name: Crisp
-Plugin URI: http://wordpress.org/plugins/crisp/
-Description: Crisp is a Livechat plugin
-Author: Crisp IM
-Version: 0.19
-Author URI: https://crisp.chat
+ * Plugin Name: Crisp
+ * Plugin URI: http://wordpress.org/plugins/crisp/
+ * Description: Crisp is a Livechat plugin
+ * Author: Crisp IM
+ * Version: 0.19
+ * Author URI: https://crisp.chat
+ *
+ * Text Domain: crisp
+ * Domain Path: /languages/
 */
 
 add_action('admin_menu', 'crisp_create_menu');
 
 function crisp_create_menu() {
-  add_menu_page('Crisp Settings', 'Crisp Settings', 'administrator', __FILE__, 'crisp_plugin_settings_page' , 'https://crisp.chat/favicon.png');
+  add_menu_page(__('Crisp Settings', 'crisp'), __('Crisp Settings', 'crisp'), 'administrator', __FILE__, 'crisp_plugin_settings_page' , 'https://crisp.chat/favicon.png');
   add_action('admin_init', 'register_crisp_plugin_settings' );
   add_action('admin_init', 'register_crisp_plugin_onboarding');
 }
@@ -51,18 +54,18 @@ function crisp_plugin_settings_page() {
 
   <div class="wrap crisp-wrap">
     <div class="crisp-modal">
-      <h2 class="crisp-title">Connected with Crisp.</h2>
-      <p class="crisp-subtitle">You can now use Crisp from your homepage.</p>
-      <a class="crisp-button crisp-neutral" href="https://app.crisp.chat/settings/website/<?php echo $website_id ?>">Go to my Crisp settings</a>
+      <h2 class="crisp-title"><?php _e('Connected with Crisp.', 'crisp'); ?></h2>
+      <p class="crisp-subtitle"><?php _e('You can now use Crisp from your homepage.', 'crisp'); ?></p>
+      <a class="crisp-button crisp-neutral" href="https://app.crisp.chat/settings/website/<?php echo $website_id ?>"><?php _e('Go to my Crisp settings', 'crisp'); ?></a>
 
-      <a class="crisp-button crisp" href="https://app.crisp.chat/website/<?php echo $website_id ?>/inbox/">Go to my Inbox</a>
+      <a class="crisp-button crisp" href="https://app.crisp.chat/website/<?php echo $website_id ?>/inbox/"><?php _e('Go to my Inbox', 'crisp'); ?></a>
 
-      <a class="crisp-button crisp-neutral" href="<?php echo $add_to_crisp_link; ?>">Reconfigure</a>
+      <a class="crisp-button crisp-neutral" href="<?php echo $add_to_crisp_link; ?>"><?php _e('Reconfigure', 'crisp'); ?></a>
 
       
     </div>
 
-    <p class="crisp-notice">Loving Crisp <b style='color:red'>♥</b> ? Rate us on the <a target="_blank" href="https://wordpress.org/support/plugin/crisp/reviews/?filter=5">Wordpress Plugin Directory</a></p>
+    <p class="crisp-notice"><?php _e('Loving Crisp <b style="color:red">♥</b> ? Rate us on the <a target="_blank" href="https://wordpress.org/support/plugin/crisp/reviews/?filter=5">Wordpress Plugin Directory</a>', 'crisp'); ?></p>
   </div>
 
   <?php
@@ -70,9 +73,9 @@ function crisp_plugin_settings_page() {
   ?>
   <div class="wrap crisp-wrap">
     <div class="crisp-modal">
-      <h2 class="crisp-title">Connect with Crisp.</h2>
-      <p class="crisp-subtitle">This link will redirect you to Crisp and configure your Wordpress. Magic</p>
-      <a class="crisp-button crisp" href="<?php echo $add_to_crisp_link; ?>">Connect with Crisp</a>
+      <h2 class="crisp-title"><?php _e('Connect with Crisp.', 'crisp'); ?></h2>
+      <p class="crisp-subtitle"><?php _e('This link will redirect you to Crisp and configure your Wordpress. Magic', 'crisp'); ?></p>
+      <a class="crisp-button crisp" href="<?php echo $add_to_crisp_link; ?>"><?php _e('Connect with Crisp', 'crisp'); ?></a>
     </div>
   </div>
   <?php
@@ -191,5 +194,3 @@ function crisp_hook_head() {
   
   echo $output;
 }
-
-?>
