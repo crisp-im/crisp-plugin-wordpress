@@ -2,12 +2,15 @@
 /**
  * @package Crisp
  * @version 0.19
-Plugin Name: Crisp
-Plugin URI: http://wordpress.org/plugins/crisp/
-Description: Crisp is a Livechat plugin
-Author: Crisp IM
-Version: 0.19
-Author URI: https://crisp.chat
+ * Plugin Name: Crisp
+ * Plugin URI: http://wordpress.org/plugins/crisp/
+ * Description: Crisp is a Livechat plugin
+ * Author: Crisp IM
+ * Version: 0.19
+ * Author URI: https://crisp.chat
+ *
+ * Text Domain: crisp
+ * Domain Path: /languages/
 */
 
 add_action('admin_menu', 'crisp_create_menu');
