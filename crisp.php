@@ -1,13 +1,12 @@
 <?php
 /**
  * @package Crisp
- * @version 0.20
- * @version 0.19
+ * @version 0.21
  * Plugin Name: Crisp
  * Plugin URI: http://wordpress.org/plugins/crisp/
  * Description: Crisp is a Livechat plugin
  * Author: Crisp IM
- * Version: 0.19
+ * Version: 0.21
  * Author URI: https://crisp.chat
  *
  * Text Domain: crisp
@@ -181,6 +180,11 @@ function crisp_sync_woocommerce_customer() {
 
 function crisp_hook_head() {
   $website_id = get_option('website_id');
+  $locale = str_replace("_", "-", strtolower(get_locale()));
+
+  if (!in_array($locale, array("pt-br", "pt-pr"))) {
+    $locale = substr($locale, 0, 2);
+  }
 
   if (!isset($website_id) || empty($website_id)) {
     return;
@@ -188,6 +192,9 @@ function crisp_hook_head() {
 
   $output="<script data-cfasync='false'>
     window.\$crisp=[];
+    CRISP_RUNTIME_CONFIG = {
+      locale : '$locale'
+    };
     CRISP_WEBSITE_ID = '$website_id';";
 
 
