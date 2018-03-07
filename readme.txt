@@ -71,6 +71,54 @@ From smileys to animations, our chat system is fresh, cool, and simple to use. J
 
 == Changelog ==
 
+= 0.21 =
+* Auto-set language
+
+= 0.20 =
+* Verify emails using HMAC
+
+= 0.19 =
+* Woocommerce compatibility
+
+= 0.18 =
+* Migrates .IM to .CHAT
+
+= 0.17 =
+* This release is fixing a bug
+
+= 0.16 =
+* This release is fixing a bug
+
+= 0.15 =
+* Simplifies the Crisp setup process
+
+= 0.14 =
+* Design improvement
+
+= 0.13 =
+* Auto-restore chats
+
+= 0.12 =
+* This version improves asynchronous API
+
+= 0.11 =
+* This version improves asynchronous API
+
+= 0.10 =
+* Design improvements
+
+= 0.9 =
+* This version fixes conflicts with Cloudflare
+
+= 0.8 =
+* Username is now automatically synced
+
+= 0.7 =
+* Design improvements
+
+= 0.6 =
+* Handles asynchronous API calls
+
 = 0.5 =
 * New way to install Crisp
 
