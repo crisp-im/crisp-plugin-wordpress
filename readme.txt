@@ -72,6 +72,9 @@ From smileys to animations, our chat system is fresh, cool, and simple to use. J
 
 == Changelog ==
 
+= 0.22 =
+* Bug fixes
+
 = 0.21 =
 * Auto-set language
 
