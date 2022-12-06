@@ -13,6 +13,14 @@
  * Domain Path: /languages/
 */
 
+add_action( 'plugins_loaded', 'crisp_load_textdomain' );
+/**
+ * Load plugin textdomain.
+ */
+function crisp_load_textdomain() {
+   load_plugin_textdomain( 'crisp', false, basename( dirname( __FILE__ ) ) . '/languages' );
+}
+
 add_action('admin_menu', 'crisp_create_menu');
 
 function crisp_create_menu() {
