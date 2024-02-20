@@ -66,7 +66,7 @@ function crisp_plugin_settings_page() {
 
       <a class="crisp-button crisp-neutral" href="<?php echo $add_to_crisp_link; ?>"><?php _e('Reconfigure', 'crisp'); ?></a>
 
-      
+
     </div>
 
     <p class="crisp-notice"><?php _e('Loving Crisp <b style="color:red">♥</b> ? Rate us on the <a target="_blank" href="https://wordpress.org/support/plugin/crisp/reviews/?filter=5">Wordpress Plugin Directory</a>', 'crisp'); ?></p>
@@ -102,8 +102,8 @@ function crisp_sync_wordpress_user() {
 
   $website_verify = get_option('website_verify');
 
-  $email = $current_user->user_email;
-  $nickname = $current_user->display_name;
+  $email = esc_js($current_user->user_email);
+  $nickname = esc_js($current_user->display_name);
 
   if (!empty($email) && empty($website_verify)) {
     $output .= '$crisp.push(["set", "user:email", "' . $email . '"]);';
@@ -208,6 +208,6 @@ function crisp_hook_head() {
   $output .= crisp_sync_woocommerce_customer();
 
   $output .= "</script>";
-  
+
   echo $output;
 }
